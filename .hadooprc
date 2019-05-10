@@ -1,0 +1,30 @@
+# .hadooprc
+# Set Hadoop run time environment
+
+# Set opt install directory
+export OPT_DIR="/usr/hdeco"
+
+# Set Hadoop core home directories
+export HADOOP_COMMON_HOME="$OPT_DIR/hadoop"
+export HADOOP_HDFS_HOME="$OPT_DIR/hadoop-hdfs"
+export HADOOP_YARN_HOME="$OPT_DIR/hadoop-yarn"
+export HADOOP_MAPRED_HOME="$OPT_DIR/hadoop-mapreduce"
+
+# Set Hadoop core sbin paths
+export PATH="$PATH:$HADOOP_COMMON_HOME/sbin"
+export PATH="$PATH:$HADOOP_HDFS_HOME/sbin"
+export PATH="$PATH:$HADOOP_YARN_HOME/sbin"
+export PATH="$PATH:$HADOOP_MAPRED_HOME/sbin"
+
+# Set zookeper path
+export ZOOKEEPER_HOME="$OPT_DIR/zookeeper"
+#export PATH="$PATH:$ZOOKEEPER_HOME=$PATH:$ZOOKEEPER_HOME/bin"
+export PATH="$PATH:$ZOOKEEPER_HOME/bin"
+export ZOOCFGDIR="/etc/zookeeper/conf"
+
+# Set HBASE path
+export HBASE_HOME="$OPT_DIR/hbase"
+export PATH="$PATH:$OPT_DIR/hbase/bin"
+
+
+
