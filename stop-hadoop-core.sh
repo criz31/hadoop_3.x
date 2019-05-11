@@ -1,15 +1,21 @@
 #!/usr/bin/bash
 
-echo "Stopping hdfs daemons"
+echo "Stopping mapreduce daemon.."
+mr-jobhistory-daemon.sh stop historyserver
 
-# Stop all daemons
-echo "Stopping secondary namenode daemon.."
+echo "Stopping yarn daemon.."
+yarn --daemon stop nodemanager
+yarn --daemon stop resourcemanager
+
+echo "Stopping secondarynamenode daemon.."
 (hdfs --daemon stop secondarynamenode)
+
 echo "Stopping datanode daemon.."
 (hdfs --daemon stop datanode)
+
 echo "Stopping namenode daemon.."
 (hdfs --daemon stop namenode)
 
-printf "\nCurrent processes:\n"
+printf "\nCurrent process:\n"
 jps
 

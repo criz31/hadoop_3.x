@@ -2,7 +2,7 @@
 
 RUN_DIR="/var/run"
 
-# create if /var/run/hadoop and subdirectories do not exist
+# Create hadoop-core run directories
 if [ ! -d "$RUN_DIR/hadoop" ]; then
   sudo mkdir "$RUN_DIR/hadoop"
   sudo mkdir "$RUN_DIR/hadoop/hdfs"
@@ -11,17 +11,18 @@ if [ ! -d "$RUN_DIR/hadoop" ]; then
   sudo chown -R hduser:hadoop "$RUN_DIR/hadoop"
 fi
 
-ls -l /var/run/hadoop
+# Create zookeeper run directory
+if [ ! -d "$RUN_DIR/zookeeper" ]; then
+  sudo mkdir "$RUN_DIR/zookeeper"
+  sudo chown -R hduser:hadoop "$RUN_DIR/zookeeper"
+fi
 
-## create if /var/run/zookeeper does not exist
-#if [ ! -d "$RUN_DIR/hadoop" ]; then
-#  mkdir "$RUN_DIR/zookeper"
-#  sudo chown -R hduser:hadoop "$RUN_DIR/zookeeper"
-#fi
+# Create hbase run directory
+if [ ! -d "$RUN_DIR/hbase" ]; then
+  sudo mkdir "$RUN_DIR/hbase"
+  sudo chown -R hduser:hadoop "$RUN_DIR/hbase"
+fi
 
-# create if /var/base and subdirectories if not exist
-#if [ ! -d "$RUN_DIR/hbase" ]; then
-#  mkdir "$RUN_DIR/hbase"
-#  sudo chown -R hduser:hadoop "$RUN_DIR/hbase"
-#fi
+# Check all created directories
+ls -l /run | grep -e hadoop -e zookeeper -e hbase
 
